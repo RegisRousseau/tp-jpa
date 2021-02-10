@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+	version="2.2">
+
+	<!-- RESOURCE_LOCAL | JTA -->	
+<!-- 	<persistence-unit name="tp-jpa-eclipselink-create" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		
+		
+		<class>org.paumard.jpa.model.Commune</class>
+		<class>org.paumard.jpa.model.Maire</class> 
+		
+		
+		<properties>
+		
+			<property name="javax.persistence.jdbc.driver" 
+					  value="com.mysql.jdbc.Driver" />
+					  
+			<property name="javax.persistence.jdbc.url" 
+					  value="jdbc:mysql://localhost:3306/db_jpa" />
+					  
+			<property name="javax.persistence.jdbc.user" 
+					  value="tp-jpa-user" />
+					  
+			<property name="javax.persistence.jdbc.password" 
+					  value="user" />
+					  
+			create-tables | create-or-extend-tables | drop-and-create-tables | none
+			<property name="eclipselink.ddl-generation" 
+			          value="drop-and-create-tables" />
+			
+			<property name="eclipselink.create-ddl-jdbc-file-name" 
+			          value="sql/create-schema.sql"/>
+			          
+			<property name="eclipselink.drop-ddl-jdbc-file-name" 
+			          value="sql/drop-schema.sql"/>
+			          
+			database | file | both
+			<property name="eclipselink.ddl-generation.output-mode" value="both"/>
+			
+			<property name="eclipselink.target-database" value="MySQL"/>
+		
+		</properties>
+	
+	</persistence-unit> 
+-->
+	
+	<persistence-unit name="tp-jpa-hibernate-create" transaction-type="RESOURCE_LOCAL">
+
+		<!-- Implementation de PersistenceProvider -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/db_jpa" />
+			<property name="javax.persistence.jdbc.user"
+				value="tp-jpa-user" />
+			<property name="javax.persistence.jdbc.password"
+				value="user" />
+				
+			<!-- validate | update | create | create-drop -->
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<!--  -->
+			
+			<!-- https://www.youtube.com/watch?v=FjmuClV40A4 -->
+			<!--pour voir ce que fais Hibernate :  -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="false" />
+			<property name="org.hibernate.SQL" value="debug" />
+			<property name="org.hibernate.type.descriptor.sql" value="trace" />
+		</properties>
+
+	</persistence-unit>
+	
+ 
+	<persistence-unit name="tp-jpa-hibernate-select" transaction-type="RESOURCE_LOCAL">
+
+		<!-- Implementation de PersistenceProvider -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/db_jpa" />
+			<property name="javax.persistence.jdbc.user"
+				value="tp-jpa-user" />
+			<property name="javax.persistence.jdbc.password"
+				value="user" />
+				
+			<!-- validate | update | create | create-drop -->
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
+			
+			<!-- https://www.youtube.com/watch?v=FjmuClV40A4 -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="false" />
+			<property name="org.hibernate.SQL" value="debug" />
+			<property name="org.hibernate.type.descriptor.sql" value="trace" />
+		</properties>
+
+	</persistence-unit> 
+
+</persistence>
